@@ -138,6 +138,7 @@ class User extends Database{
         }
     }
 
+    // delete() will delete the user in the table.
     public function delete()
     {
         session_start();
@@ -146,6 +147,7 @@ class User extends Database{
         $sql = "DELETE FROM users WHERE id = $id";
 
         if($this->conn->query($sql)) {
+            // call the logout() method
             $this->logout();
         } else {
             die('Error deleting your account: ' . $this->conn->error);
